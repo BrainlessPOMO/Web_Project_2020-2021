@@ -1,283 +1,281 @@
-
 let map;
 let markers = [];
 let markerData = [];
 const startingPos = { lat: 38.2359522, lng: 21.7374126 };
 
 function initMap() {
-  const styles =
-  [
+  const styles = [
     {
-      "elementType": "geometry",
-      "stylers": [
+      elementType: "geometry",
+      stylers: [
         {
-          "color": "#1d2c4d"
-        }
-      ]
+          color: "#1d2c4d",
+        },
+      ],
     },
     {
-      "elementType": "labels.text.fill",
-      "stylers": [
+      elementType: "labels.text.fill",
+      stylers: [
         {
-          "color": "#8ec3b9"
-        }
-      ]
+          color: "#8ec3b9",
+        },
+      ],
     },
     {
-      "elementType": "labels.text.stroke",
-      "stylers": [
+      elementType: "labels.text.stroke",
+      stylers: [
         {
-          "color": "#1a3646"
-        }
-      ]
+          color: "#1a3646",
+        },
+      ],
     },
     {
-      "featureType": "administrative",
-      "elementType": "geometry",
-      "stylers": [
+      featureType: "administrative",
+      elementType: "geometry",
+      stylers: [
         {
-          "visibility": "off"
-        }
-      ]
+          visibility: "off",
+        },
+      ],
     },
     {
-      "featureType": "administrative.country",
-      "elementType": "geometry.stroke",
-      "stylers": [
+      featureType: "administrative.country",
+      elementType: "geometry.stroke",
+      stylers: [
         {
-          "color": "#4b6878"
-        }
-      ]
+          color: "#4b6878",
+        },
+      ],
     },
     {
-      "featureType": "administrative.land_parcel",
-      "elementType": "labels.text.fill",
-      "stylers": [
+      featureType: "administrative.land_parcel",
+      elementType: "labels.text.fill",
+      stylers: [
         {
-          "color": "#64779e"
-        }
-      ]
+          color: "#64779e",
+        },
+      ],
     },
     {
-      "featureType": "administrative.province",
-      "elementType": "geometry.stroke",
-      "stylers": [
+      featureType: "administrative.province",
+      elementType: "geometry.stroke",
+      stylers: [
         {
-          "color": "#4b6878"
-        }
-      ]
+          color: "#4b6878",
+        },
+      ],
     },
     {
-      "featureType": "landscape.man_made",
-      "elementType": "geometry.stroke",
-      "stylers": [
+      featureType: "landscape.man_made",
+      elementType: "geometry.stroke",
+      stylers: [
         {
-          "color": "#334e87"
-        }
-      ]
+          color: "#334e87",
+        },
+      ],
     },
     {
-      "featureType": "landscape.natural",
-      "elementType": "geometry",
-      "stylers": [
+      featureType: "landscape.natural",
+      elementType: "geometry",
+      stylers: [
         {
-          "color": "#023e58"
-        }
-      ]
+          color: "#023e58",
+        },
+      ],
     },
     {
-      "featureType": "poi",
-      "stylers": [
+      featureType: "poi",
+      stylers: [
         {
-          "visibility": "off"
-        }
-      ]
+          visibility: "off",
+        },
+      ],
     },
     {
-      "featureType": "poi",
-      "elementType": "geometry",
-      "stylers": [
+      featureType: "poi",
+      elementType: "geometry",
+      stylers: [
         {
-          "color": "#283d6a"
-        }
-      ]
+          color: "#283d6a",
+        },
+      ],
     },
     {
-      "featureType": "poi",
-      "elementType": "labels.text.fill",
-      "stylers": [
+      featureType: "poi",
+      elementType: "labels.text.fill",
+      stylers: [
         {
-          "color": "#6f9ba5"
-        }
-      ]
+          color: "#6f9ba5",
+        },
+      ],
     },
     {
-      "featureType": "poi",
-      "elementType": "labels.text.stroke",
-      "stylers": [
+      featureType: "poi",
+      elementType: "labels.text.stroke",
+      stylers: [
         {
-          "color": "#1d2c4d"
-        }
-      ]
+          color: "#1d2c4d",
+        },
+      ],
     },
     {
-      "featureType": "poi.park",
-      "elementType": "geometry.fill",
-      "stylers": [
+      featureType: "poi.park",
+      elementType: "geometry.fill",
+      stylers: [
         {
-          "color": "#023e58"
-        }
-      ]
+          color: "#023e58",
+        },
+      ],
     },
     {
-      "featureType": "poi.park",
-      "elementType": "labels.text.fill",
-      "stylers": [
+      featureType: "poi.park",
+      elementType: "labels.text.fill",
+      stylers: [
         {
-          "color": "#3C7680"
-        }
-      ]
+          color: "#3C7680",
+        },
+      ],
     },
     {
-      "featureType": "road",
-      "elementType": "geometry",
-      "stylers": [
+      featureType: "road",
+      elementType: "geometry",
+      stylers: [
         {
-          "color": "#304a7d"
-        }
-      ]
+          color: "#304a7d",
+        },
+      ],
     },
     {
-      "featureType": "road",
-      "elementType": "labels.icon",
-      "stylers": [
+      featureType: "road",
+      elementType: "labels.icon",
+      stylers: [
         {
-          "visibility": "off"
-        }
-      ]
+          visibility: "off",
+        },
+      ],
     },
     {
-      "featureType": "road",
-      "elementType": "labels.text.fill",
-      "stylers": [
+      featureType: "road",
+      elementType: "labels.text.fill",
+      stylers: [
         {
-          "color": "#98a5be"
-        }
-      ]
+          color: "#98a5be",
+        },
+      ],
     },
     {
-      "featureType": "road",
-      "elementType": "labels.text.stroke",
-      "stylers": [
+      featureType: "road",
+      elementType: "labels.text.stroke",
+      stylers: [
         {
-          "color": "#1d2c4d"
-        }
-      ]
+          color: "#1d2c4d",
+        },
+      ],
     },
     {
-      "featureType": "road.highway",
-      "elementType": "geometry",
-      "stylers": [
+      featureType: "road.highway",
+      elementType: "geometry",
+      stylers: [
         {
-          "color": "#2c6675"
-        }
-      ]
+          color: "#2c6675",
+        },
+      ],
     },
     {
-      "featureType": "road.highway",
-      "elementType": "geometry.stroke",
-      "stylers": [
+      featureType: "road.highway",
+      elementType: "geometry.stroke",
+      stylers: [
         {
-          "color": "#255763"
-        }
-      ]
+          color: "#255763",
+        },
+      ],
     },
     {
-      "featureType": "road.highway",
-      "elementType": "labels.text.fill",
-      "stylers": [
+      featureType: "road.highway",
+      elementType: "labels.text.fill",
+      stylers: [
         {
-          "color": "#b0d5ce"
-        }
-      ]
+          color: "#b0d5ce",
+        },
+      ],
     },
     {
-      "featureType": "road.highway",
-      "elementType": "labels.text.stroke",
-      "stylers": [
+      featureType: "road.highway",
+      elementType: "labels.text.stroke",
+      stylers: [
         {
-          "color": "#023e58"
-        }
-      ]
+          color: "#023e58",
+        },
+      ],
     },
     {
-      "featureType": "transit",
-      "stylers": [
+      featureType: "transit",
+      stylers: [
         {
-          "visibility": "off"
-        }
-      ]
+          visibility: "off",
+        },
+      ],
     },
     {
-      "featureType": "transit",
-      "elementType": "labels.text.fill",
-      "stylers": [
+      featureType: "transit",
+      elementType: "labels.text.fill",
+      stylers: [
         {
-          "color": "#98a5be"
-        }
-      ]
+          color: "#98a5be",
+        },
+      ],
     },
     {
-      "featureType": "transit",
-      "elementType": "labels.text.stroke",
-      "stylers": [
+      featureType: "transit",
+      elementType: "labels.text.stroke",
+      stylers: [
         {
-          "color": "#1d2c4d"
-        }
-      ]
+          color: "#1d2c4d",
+        },
+      ],
     },
     {
-      "featureType": "transit.line",
-      "elementType": "geometry.fill",
-      "stylers": [
+      featureType: "transit.line",
+      elementType: "geometry.fill",
+      stylers: [
         {
-          "color": "#283d6a"
-        }
-      ]
+          color: "#283d6a",
+        },
+      ],
     },
     {
-      "featureType": "transit.station",
-      "elementType": "geometry",
-      "stylers": [
+      featureType: "transit.station",
+      elementType: "geometry",
+      stylers: [
         {
-          "color": "#3a4762"
-        }
-      ]
+          color: "#3a4762",
+        },
+      ],
     },
     {
-      "featureType": "water",
-      "elementType": "geometry",
-      "stylers": [
+      featureType: "water",
+      elementType: "geometry",
+      stylers: [
         {
-          "color": "#0e1626"
-        }
-      ]
+          color: "#0e1626",
+        },
+      ],
     },
     {
-      "featureType": "water",
-      "elementType": "labels.text.fill",
-      "stylers": [
+      featureType: "water",
+      elementType: "labels.text.fill",
+      stylers: [
         {
-          "color": "#4e6d70"
-        }
-      ]
-    }
-  ]
+          color: "#4e6d70",
+        },
+      ],
+    },
+  ];
   map = new google.maps.Map(document.getElementById("map"), {
     center: startingPos,
     zoom: 15,
-    styles : styles,
-    disableDefaultUI: true
+    styles: styles,
+    disableDefaultUI: true,
   });
   let infoWindow = new google.maps.InfoWindow();
 
@@ -322,137 +320,169 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
-function makeMarker(){
-  
+function makeMarker() {
   //delete all the previous markers
-  deleteMarkers()
+  deleteMarkers();
 
   //the user's searching tags
-  var tags = document.getElementById('findPlaces').value.split(' ')
-  
+  var tags = document.getElementById("findPlaces").value.split(" ");
+
   //get day and hour, the day number does not correspond exactly to the database number
   var date = new Date();
   var day = date.getDay() - 1;
-  if(day == -1){ day = 6; }
+  if (day == -1) {
+    day = 6;
+  }
 
   //find the next 2 hours
-  var firstHour = date.getHours() + 1
-  if(firstHour > 23) firstHour = 0
-  var secondHour = firstHour + 1
+  var firstHour = date.getHours() + 1;
+  if (firstHour > 23) firstHour = 0;
+  var secondHour = firstHour + 1;
 
   //get the data from db to map
   fetch("http://localhost:3000/Login/user.json")
-  .then(r => r.json())
-  .then(data => {
-    for(let i=0; i<data.length; i++){
-      
-      //make every marker possible, with the keyword everything
-      if(tags[0] == 'everything'){
-        
-        //get the exact popularity of the place for the next 2 hours
-        const firstHourPopularity = data[i].populartimes[day].data[firstHour]
-        const secondHourPopularity = data[i].populartimes[day].data[secondHour]
-        //averagePopularity of the next 2 hours
-        const averagePopularity = (firstHourPopularity + secondHourPopularity)/2
+    .then((r) => r.json())
+    .then((data) => {
+      for (let i = 0; i < data.length; i++) {
+        //make every marker possible, with the keyword everything
+        if (tags[0] == "everything") {
+          //get the exact popularity of the place for the next 2 hours
+          const firstHourPopularity = data[i].populartimes[day].data[firstHour];
+          const secondHourPopularity =
+            data[i].populartimes[day].data[secondHour];
+          //averagePopularity of the next 2 hours
+          const averagePopularity =
+            (firstHourPopularity + secondHourPopularity) / 2;
 
-        const contentString = '<p>Name: ' + data[i].name + '</p>' 
-        + '<p>address: ' + data[i].address + '</p>' 
-        + '<p>rating: ' + data[i].rating + '</p>'
-        + '<p>averagePopularity: ' + averagePopularity + '% </p>'
-        + '<p>tags: #' + data[i].types.join(', #') + '</p>';
+          const contentString =
+            "<p>Name: " +
+            data[i].name +
+            "</p>" +
+            "<p>address: " +
+            data[i].address +
+            "</p>" +
+            "<p>rating: " +
+            data[i].rating +
+            "</p>" +
+            "<p>averagePopularity: " +
+            averagePopularity +
+            "% </p>" +
+            "<p>tags: #" +
+            data[i].types.join(", #") +
+            "</p>";
 
-        const window = new google.maps.InfoWindow({
-          content: contentString,
-        });
-      
-        //make the marker
-        const marker = setMarker(data[i], averagePopularity);
-        //put all the markers in an array so I can delete them
-        markers.push(marker);
-      
-        //button for closing window
-        marker.addListener("click", () => {
-          window.open({
-            anchor: marker,
-            map,
-            shouldFocus: false
+          const window = new google.maps.InfoWindow({
+            content: contentString,
           });
-        });
 
-      }else{ //make the markers for the places the user wants
-      // circle through the type array on db
-        data[i].types.forEach(type => {
-          // circle through the given tags
-          tags.forEach(tag => {
-            // if the type wants this type make the marker 
-            if(type == tag){
+          //make the marker
+          const marker = setMarker(data[i], averagePopularity);
+          //put all the markers in an array so I can delete them
+          markers.push(marker);
 
-              //get the exact popularity of the place for the next 2 hours
-              const firstHourPopularity = data[i].populartimes[day].data[firstHour]
-              const secondHourPopularity = data[i].populartimes[day].data[secondHour]
-              //averagePopularity of the next 2 hours
-              const averagePopularity = (firstHourPopularity + secondHourPopularity)/2
-              console.log('firsthour : ' + firstHour + ' secondHour : ' + secondHour + ' averagePopularity : ' + averagePopularity);
+          //button for closing window
+          marker.addListener("click", () => {
+            window.open({
+              anchor: marker,
+              map,
+              shouldFocus: false,
+            });
+          });
+        } else {
+          //make the markers for the places the user wants
+          // circle through the type array on db
+          data[i].types.forEach((type) => {
+            // circle through the given tags
+            tags.forEach((tag) => {
+              // if the type wants this type make the marker
+              if (type == tag) {
+                //get the exact popularity of the place for the next 2 hours
+                const firstHourPopularity =
+                  data[i].populartimes[day].data[firstHour];
+                const secondHourPopularity =
+                  data[i].populartimes[day].data[secondHour];
+                //averagePopularity of the next 2 hours
+                const averagePopularity =
+                  (firstHourPopularity + secondHourPopularity) / 2;
+                console.log(
+                  "firsthour : " +
+                    firstHour +
+                    " secondHour : " +
+                    secondHour +
+                    " averagePopularity : " +
+                    averagePopularity
+                );
 
-              const contentString = '<p>Name: ' + data[i].name + '</p>' 
-              + '<p>address: ' + data[i].address + '</p>' 
-              + '<p>rating: ' + data[i].rating + '</p>'
-              + '<p>averagePopularity: ' + averagePopularity + '% </p>'
-              + '<p>tags: #' + data[i].types.join(', #') + '</p>';
+                const contentString =
+                  "<p>Name: " +
+                  data[i].name +
+                  "</p>" +
+                  "<p>address: " +
+                  data[i].address +
+                  "</p>" +
+                  "<p>rating: " +
+                  data[i].rating +
+                  "</p>" +
+                  "<p>averagePopularity: " +
+                  averagePopularity +
+                  "% </p>" +
+                  "<p>tags: #" +
+                  data[i].types.join(", #") +
+                  "</p>";
 
-              const window = new google.maps.InfoWindow({
-                content: contentString,
-              });
-            
-              //make the marker
-              const marker = setMarker(data[i], averagePopularity);
-              //put all the markers in an array so I can delete them
-              markers.push(marker);
-            
-              //button for closing window
-              marker.addListener("click", () => {
-                window.open({
-                  anchor: marker,
-                  map,
-                  shouldFocus: false
+                const window = new google.maps.InfoWindow({
+                  content: contentString,
                 });
-              });
-            }
+
+                //make the marker
+                const marker = setMarker(data[i], averagePopularity);
+                //put all the markers in an array so I can delete them
+                markers.push(marker);
+
+                //button for closing window
+                marker.addListener("click", () => {
+                  window.open({
+                    anchor: marker,
+                    map,
+                    shouldFocus: false,
+                  });
+                });
+              }
+            });
           });
-        });
+        }
       }
-    }
-  }).catch((error) => console.log(error));
+    })
+    .catch((error) => console.log(error));
 }
 
-function setMarker(place, averagePopularity){
-  
-  if (averagePopularity <= 32){
+function setMarker(place, averagePopularity) {
+  if (averagePopularity <= 32) {
     const marker = new google.maps.Marker({
       position: { lat: place.coordinates.lat, lng: place.coordinates.lng },
-      icon: '../../icon/map-green.png',
-      map
+      icon: "../../icon/map-green.png",
+      map,
     });
     return marker;
-  }else if(averagePopularity > 32 && averagePopularity <= 65){
+  } else if (averagePopularity > 32 && averagePopularity <= 65) {
     const marker = new google.maps.Marker({
       position: { lat: place.coordinates.lat, lng: place.coordinates.lng },
-      icon: '../../icon/map-orange_2.png',
-      map
+      icon: "../../icon/map-orange_2.png",
+      map,
     });
     return marker;
-  }else{
+  } else {
     const marker = new google.maps.Marker({
       position: { lat: place.coordinates.lat, lng: place.coordinates.lng },
-      icon: '../../icon/map-red.png',
-      map
+      icon: "../../icon/map-red.png",
+      map,
     });
     return marker;
   }
 }
 
-function deleteMarkers (){
-  for (let i = 0; i<markers.length; i++){
+function deleteMarkers() {
+  for (let i = 0; i < markers.length; i++) {
     markers[i].setMap(null);
   }
   markers = [];
