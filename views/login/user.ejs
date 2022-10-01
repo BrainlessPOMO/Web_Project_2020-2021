@@ -1,5 +1,12 @@
-<script type="text/javascript" src="/js/user.js"></script>
 <header>
+  <script type="text/javascript" src="/js/user.js" defer></script>
+  <%# initialize script for google maps %>
+  <script
+    src="<%='https://maps.googleapis.com/maps/api/js?key=' + process.env.GEOCODER_API_KEY + '&callback=initMap&v=weekly'%>"
+    defer
+  ></script>
+  <script src="/js/map.js"></script>
+  <%# end script for google maps %>
   <section class="general-header">
     <nav>
       <a href="/"><img src="/images/mayday_logo.png" alt="#" /></a>
@@ -64,34 +71,28 @@
       >
       <div class="horizontal-group_user_map">
         <div class="left">
-          <div class="map">
-            <div class="input-container ic1">
+          <div class="center-left">
+            <button class="btn" id="makeMarker" onclick="makeMarker()">
+              Find
+            </button>
+            <button class="btn" id="deleteMarkers" onclick="deleteMarkers()">
+              Delete
+            </button>
+            <div id="map"></div>
+            <%# script for maps API %> <%# END script for maps API %>
+            <div class="input-container stack-top">
               <input
                 type="text"
                 id="findPlaces"
                 class="input"
                 name="findPlaces"
-                placeholder=" "
+                placeholder="Search Places"
               />
-              <div class="cut cut-medium"></div>
+              <!--<div class="cut cut-medium"></div>
               <label for="findPlaces" class="placeholder changed"
                 >Search Places</label
-              >
+              >-->
             </div>
-            <button class="btn" id="findButton" onclick="makeMarker()">
-              Find
-            </button>
-            <button class="btn" id="findButton" onclick="deleteMarkers()">
-              Delete
-            </button>
-            <div id="map"></div>
-            <%# script for maps API %>
-            <script
-              src="<%='https://maps.googleapis.com/maps/api/js?key=' + process.env.GEOCODER_API_KEY + '&callback=initMap&v=weekly'%>"
-              async
-            ></script>
-            <script src="/js/map.js"></script>
-            <%# END script for maps API %>
           </div>
         </div>
         <div class="right">

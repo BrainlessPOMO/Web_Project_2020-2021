@@ -38,6 +38,24 @@
   width: 100%;
 }
 
+.stack-top {
+  position: absolute;
+  margin: auto;
+  top: 4%;
+  left: 5%;
+  width: 90%;
+  z-index: 9;
+}
+
+.map-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 99;
+  height: 50px;
+  width: 49%;
+}
+
 .ic1 {
   margin-top: 40px;
 }
@@ -115,7 +133,7 @@
 }
 
 .input:focus ~ .placeholder {
-  color: #dc2f55;
+  color: #f1f1f1;
 }
 
 .submit {

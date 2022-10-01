@@ -61,3 +61,18 @@ function openHistoryCovid() {
     historyListCovid.style.display = "block";
   }
 }
+
+var searchInput = document.getElementById("findPlaces");
+console.log(searchInput);
+
+if (searchInput) {
+  searchInput.addEventListener("keypress", function (event) {
+    if (event.key != "Enter") {
+      return;
+    }
+    if (searchInput != "") {
+      document.getElementById("makeMarker").click();
+    }
+    document.getElementById("deleteMarkers").click();
+  });
+}
