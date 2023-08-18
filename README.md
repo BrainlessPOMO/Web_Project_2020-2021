@@ -8,5 +8,6 @@ This website is developed in the context of the 2020-2021 project for the "Progr
 - JavaScript
 - node.js
 - EJS
+- Mongo DB
 
 ### App was created by [Aggelos Vouldis](https://github.com/BrainlessPOMO) and [Georgia Fotopoulou](https://github.com/Jofoto)
